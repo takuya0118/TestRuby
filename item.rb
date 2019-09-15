@@ -2,7 +2,7 @@ require "dxopal"
 include DXOpal
 
 # パズル要素の画像(サンプル)
-Image.register(:item1, 'images/item1.png')
+Image.register(:item1, 'item1.png')
 
 # -------------------------------------------
 # パズル要素クラス
