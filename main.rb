@@ -28,6 +28,8 @@ Window.load_resources do
   #猫配置
   animal = Cat.new
 
+  animal2 = Cat.new
+  animal2.changeXY(10,50)
 
     # -------------------------------------------
     # メインループ
@@ -37,7 +39,11 @@ Window.load_resources do
         # マウス位置(x座標、y座標)の取得
         mouse_x = Input.mouse_pos_x
         mouse_y = Input.mouse_pos_y
+
+        # 動物の描画(ボタン押下で変化)
         animal.Draw
+        # 動物の描画(歩く)
+        animal2.Walking
 
         # マウスアップ時
         if Input.mouse_push?(M_LBUTTON) then
@@ -53,19 +59,17 @@ Window.load_resources do
 
               # サウンド1の再生
               Sound[:buySound].play
-
-              # アニメーション再生
-              animal.StartAnimationCase1
+              animal.StartAnimation1
             elsif mouse_y < 100 then
 
               # サウンド2の再生
               Sound[:buySound2].play
-              # アニメーション再生
-              animal.StartAnimationCase2
+              animal.StartAnimation2
             elsif mouse_y < 150 then
 
               # サウンド3の再生
               Sound[:buySound3].play
+              animal.StartAnimation3
             end
           end
         end
@@ -79,7 +83,7 @@ Window.load_resources do
 end #End Window.load_resources do
 
 # ------------------------------
-# パズル要素の描画
+# ボタン要素の描画
 # ------------------------------
 def drawItem(itemArray)
   itemArray.each do | item |
